@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // МАСИВИ
+        let bands = [
+            "pink floyd", // 0
+            "acdc", // 1
+            "shinedown", // 2
+            "steve vai" // 3
+        ];
+        console.log(bands);
+        console.log(bands[0]);
+        // length = lastIndex + 1
+        console.log(bands.length);
+        // last index = length - 1
+
+        // let lastIndex = bands.length - 1;
+        console.log(bands[bands.length-1]);
+
+        bands[4] = "joe satriani";
+        console.log(bands);
+        bands.push("deep purple");
+        console.log(bands)
+        // size = 6, index = 5
+        // insert index = 6
+
+        bands[1] = null;
+        console.log(bands);
+
+        let musicFolder = [
+          //   0        1      2     3                          4
+            ['queen', 'acdc', 'pf', 'dp', ['my death valentine', 'xxxxx', 'yyyyy']], // 0
+            ['eminem', '2pac', 'public enemy'], // 1
+            ['awd', 'qwe', 'zxc'] // 2
+        ];
+        console.log(musicFolder.length);
+        console.log(musicFolder[0][3]);
+        console.log(musicFolder[0]);
+        console.log(musicFolder[0][4]);
+        console.log(musicFolder[0][4][0]);
+
+        musicFolder[0][4].push('ppppp');
+        console.log(musicFolder[0][4]);
+
+        // ОБ'ЄКТИ
+        let user = {
+            id: 1,
+            name: 'vasya',
+            age: 34,
+            status: true
+        };
+        console.log(user);
+        console.log(user.id);
+        console.log(user.status);
+        console.log(user['status']);
+
+        let user0 = {id: 1, name: 'vasya', age: 12, status: false};
+        let users = [
+          user0,
+          {id: 2, name: 'petya', age: 15, status: true},
+          {id: 3, name: 'anna', age: 19, status: false},
+          {id: 4, name: 'max', age: 21, status: true},
+          {id: 5, name: 'olya', age: 16, status: true},
+          {id: 6, name: 'hrystia', age: 17, status: false},
+          {}
+        ];
+        console.log(users);
+        console.log(users[5]);
+        let hrys = users[5];
+        console.log(hrys.age);
+        console.log(users[6]);
+
+        user.skills = ['js', 'html', 'java'];
+        // user['skills'] = ['js', 'html', 'java'];
+        console.log(user);
+        console.log(user.skills);
+        console.log(user.skills[2]);
+        user.skills.push('html');
+        console.log(user);
+
+        user.wife = {
+            name: 'olya',
+            age: 23
+        };
+        console.log(user);
+        console.log(user.wife.name);
+
+        // number, string, boolean - primitives
+        let p = 0;
+        let pCopy = p;
+        pCopy = 1;
+        console.log(p);
+        console.log(pCopy);
+
+        let origin = {};
+        let clone = origin;
+        clone.id = 100500;
+        console.log(clone)
+        console.log(origin)
+
+
+        // let bool = confirm('???')
+        // if (bool) {
+        //     console.log('hello')
+        // };
+        // else {
+        //     console.log('bye')
+        // };
+
+       // let age = +prompt('enter your age');
+       // if (age > 18) {
+       //     console.log('adult')
+       //  } else {
+       //     console.log('cartoon')
+       // }
+
+       // let color = prompt('which color you see?')
+       // let isRoadClear = confirm('road is clear?')
+       //
+       // if (color === 'green') {
+       //     if (isRoadClear) {
+       //     console.log('go')
+       // }} else if (color === 'yellow') {
+       //     console.log('wait')
+       // } else if (color === 'red') {
+       //     console.log('stop')
+       // } else {
+       //     console.log('????')
+       // }
+
+        // let color = prompt('which color you see?')
+        // let isRoadClear = confirm('road is clear?')
+        //
+        // if (color === 'green' && isRoadClear) {
+        //     console.log('go')
+        // } else if (color === 'yellow') {
+        //     console.log('wait')
+        // } else if (color === 'red') {
+        //     console.log('stop')
+        // } else {
+        //     console.log('????')
+        // }
+
+        // && AND
+        // || OR
+
+        // let color = prompt('which color you see?')
+        // let isRoadClear = confirm('road is clear?')
+        //
+        // if (color === 'green' || isRoadClear) {
+        //     console.log('go')
+        // } else if (color === 'yellow') {
+        //     console.log('wait')
+        // } else if (color === 'red') {
+        //     console.log('stop')
+        // } else {
+        //     console.log('????')
+        // }
+
+        let color = prompt('which color you see?')
+        switch (color){
+            case 'green':
+                console.log('go')
+                break;
+
+            case 'yellow':
+                console.log('wait')
+                break;
+
+            case 'red':
+                console.log('stop')
+                break;
+
+            default:
+                console.log('???')
+        }
+
+        console.log(!!0)
+        console.log(!!'')
+        console.log(!!undefined)
+        console.log(!!null)
+
+        console.log(!![])
+        console.log(!!{})
+        console.log(!!{}.name)
+
+        let users1 = {name: 'asd'}
+
+        if (users1.name != '') {
+            console.log(users1.name)
+        } else {
+            console.log('noname')
+        }
+
+        // let x;
+        // if (true) {
+        //     x = 100;
+        // } else {
+        //     x = 200;
+        // }
+        // console.log(x)
+
+        // let x = 5 > 6 ? 100 : 200;
+        // console.log(x)
+
+        let x = 5 > 6 ? 100 : 100 > 200 ? 100500 : 200600;
+        console.log(x);
+
+        let name = prompt('enter your name') || 'john doe';
+        console.log(name)
+        // console.log(name);
+        // console.log(!!name)
+        //
+        // if (!name) {
+        //     name = 'john doe'
+        // }
+        // console.log(name)
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // Масиви та об'єкти:
+        // - Створити масив, наповнити його 10 елементами будь-якого типу, вивести кожен елемент в консоль
+        let countries = [
+            'Ukraine',
+            'USA',
+            'Canada',
+            'France',
+            'Italy',
+            'Poland',
+            'Spain',
+            'Germany',
+            'Greece',
+            'Turkey'
+        ];
+        console.log(countries[0]);
+        console.log(countries[1]);
+        console.log(countries[2]);
+        console.log(countries[3]);
+        console.log(countries[4]);
+        console.log(countries[5]);
+        console.log(countries[6]);
+        console.log(countries[7]);
+        console.log(countries[8]);
+        console.log(countries[9]);
+
+        // - Створити 3 об'єкти які описують книги. Поля об'єкту : title ,pageCount, genre.
+        let book1 = {
+            title: 'Harry Potter and the Prisoner of Azkaban',
+            pageCount: 300,
+            genre: 'adventure'
+        };
+        let book2 = {
+            title: 'Little Prince',
+            pageCount: 150,
+            genre: 'fantasy'
+        };
+        let book3 = {
+            title: 'Gone with the Wind',
+            pageCount: 350,
+            genre: 'fiction'
+        };
+
+        // - Створити 3 об'єкти які описують книги. Поля об'єкту : title ,pageCount, genre, authors. Поле "автори" - являється  масивом. Кожен автор має поля name та age.
+        let book4 = {
+            title: 'Harry Potter and the Prisoner of Azkaban',
+            pageCount: 300,
+            genre: 'adventure',
+            authors: ['J. K. Rowling', 58]
+        };
+        let book5 = {
+            title: 'Little Prince',
+            pageCount: 150,
+            genre: 'fantasy',
+            authors: ['Antoine de Saint-Exupéry', 40]
+        };
+        let book6 = {
+            title: 'Gone with the Wind',
+            pageCount: 350,
+            genre: 'fiction',
+            authors: ['Margaret Mitchell', 48]
+        };
+
+        // - Створити масив з 10 об'єктами які описують сутніть "користувач". Поля: name, username,password. Вивести в консоль пароль кожного користувача
+        let users = [
+            {name: 'vasya', username: 'vasya1', password: 111},
+            {name: 'olya', username: 'olya1', password: 222 },
+            {name: 'liliia', username: 'liliia1', password: 333},
+            {name: 'nazar', username: 'nazar1', password: 444},
+            {name: 'vitalik', username: 'vitalik1', password: 555},
+            {name: 'katya', username: 'katya1', password: 666},
+            {name: 'maksym', username: 'maksym1', password: 777},
+            {name: 'ira', username: 'ira1', password: 888},
+            {name: 'sasha', username: 'sasha1', password: 999},
+            {name: 'vlad', username: 'vlad1', password: 1010}
+        ]
+        console.log(users[0].password)
+        console.log(users[1].password)
+        console.log(users[2].password)
+        console.log(users[3].password)
+        console.log(users[4].password)
+        console.log(users[5].password)
+        console.log(users[6].password)
+        console.log(users[7].password)
+        console.log(users[8].password)
+        console.log(users[9].password)
+
+        // Логічні розгалуження:
+        // - Є змінна х, якій ви надаєте довільне числове значення.
+        // Якщо змінна x не дорівнює нулю, виведіть 'Вірно', інакше виведіть 'Невірно'. Перевірте  скрипт при a, що дорівнює 1, 0, -3
+        let x = 5;
+        if (x !== 0) {
+            console.log('true')
+        } else {
+            console.log('false')
+        }
+
+        let a = 1;
+        x = a;
+        if (x !== 0) {
+            console.log('true')
+        } else {
+            console.log('false')
+        }
+
+        a = 0;
+        x = a;
+        if (x !== 0) {
+            console.log('true')
+        } else {
+            console.log('false')
+        }
+
+        a = -3;
+        x = a;
+        if (x !== 0) {
+            console.log('true')
+        } else {
+            console.log('false')
+        }
+
+        // - Дано змінну time яка рівна числу від 0 до 59. Потрібно написати код, який перевірить, до якої четверті години попадає число
+        // (в першу, другу, третю или четверту частину години).
+        let time = 40;
+        if (time < 15){
+            console.log('first quarter')
+        } else if (time < 30){
+            console.log('second quarter')
+        } else if (time < 45){
+            console.log('third quarter')
+        } else if (time < 59){
+            console.log('firth quarter')
+        }
+
+        // - У змінній day дано якесь число від 1 до 31. Потрібно визначити, у яку половину(декаду) місяця потрапляє це число (у першу, другу чи третю)
+        let day = 11;
+        if (day < 10) {
+            console.log('first decade')
+        } else if (day < 20) {
+            console.log('second decade')
+        } else if (day < 31) {
+            console.log('third decade')
+        }
+
+        // - Скласти розклад на тиждень за домопоги switch. Користувач вводить порядковий номер дня тижня і на екрані відображається інфа що заплановано на цей день (можна замість плану на день, назву дня англійською).
+        let day1 = +prompt('please choose a day')
+        switch (day1) {
+            case 1:
+                console.log('monday')
+                break;
+
+            case 2:
+                console.log('tuesday')
+                break;
+
+            case 3:
+                console.log('wednesday')
+                break;
+
+            case 4:
+                console.log('thursday')
+                break;
+
+            case 5:
+                console.log('friday')
+                break;
+
+            case 6:
+                console.log('saturday')
+                break;
+
+            case 7:
+                console.log('sunday')
+                break;
+        }
+
+        // - Користувач вводить або має два числа.
+        // Потрібно знайти та вивести максимальне число з тих двох.
+        // Також потрібно врахувати коли введені рівні числа.
+        let user1 = +prompt('enter a number1')
+        let user2 = +prompt('enter a number2')
+        if (user1>user2 || user1 === user2){
+            console.log(user1)
+        } else if (user1<user2){
+            console.log(user2 || user1 === user2)
+        }
+
+        // - є змінна х, яка може прийняти будь-яке значення (стрінг, число, undefined, null  і тд включно).
+        // Напишіть код який, за допомоги  оператора || буде присвоювати змінній х значення "default"  якщо значення змінної х являється falsy (хибноподібні, тобто приводиться до false)
+        let x1 = 'hello';
+        if (x1 === 'null' || x1 === 'undefined' || x1 === '' || x1 === false || x1 === 'NaN' || x1 === '0') {
+            console.log('default')
+        }
+
+        // - з файлу arrays.js (лежить в папці 2023 plan) взяти масив coursesAndDurationArray. За допомоги іф перевірити кожен його елемент на тривалість навчання. У випадку якщо тривалість довша за 5 місяців вивести в консоль "Супер".
+        let coursesAndDurationArray = [
+            {title: 'JavaScript Complex', monthDuration: 5},
+            {title: 'Java Complex', monthDuration: 6},
+            {title: 'Python Complex', monthDuration: 6},
+            {title: 'QA Complex', monthDuration: 4},
+            {title: 'FullStack', monthDuration: 7},
+            {title: 'Frontend', monthDuration: 4}
+        ]
+        if (coursesAndDurationArray[0].monthDuration > 5 || coursesAndDurationArray[0].monthDuration === 5){
+            console.log('Super')
+        }
+        if (coursesAndDurationArray[1].monthDuration > 5){
+            console.log('Super')
+        }
+        if (coursesAndDurationArray[2].monthDuration > 5){
+            console.log('Super')
+        }
+        if (coursesAndDurationArray[3].monthDuration > 5){
+            console.log('Super')
+        }
+        if (coursesAndDurationArray[4].monthDuration > 5){
+            console.log('Super')
+        }
+        if (coursesAndDurationArray[5].monthDuration > 5){
+            console.log('Super')
+        }
+    </script>
+</body>
+</html>
