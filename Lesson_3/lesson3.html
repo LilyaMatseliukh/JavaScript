@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let x = 0;
+        // x = x + 10;
+        // x += 10; // скорочена конструкція
+        x++;
+        ++x;
+        console.log(x)
+
+        let a = 0;
+        let b = ++a;
+        console.log(b)
+        console.log(a)
+
+        let s = 5;
+        s = --s;
+        console.log(s)
+
+        let users = [
+            {id: 2, name: 'petya', age: 15, status: true},
+            {id: 3, name: 'anna', age: 19, status: false},
+            {id: 4, name: 'max', age: 21, status: true},
+            {id: 5, name: 'olya', age: 16, status: true},
+            {id: 6, name: 'hrystia', age: 17, status: false},
+        ];
+        console.log(users.length)
+
+        // debugger;
+        for (let index = 0; index < users.length; index++) {
+            document.write(`<div>${users[index].name}</div>`)
+        }
+        document.write(`<div>${users[0].name}</div>`)
+
+        for (let index1 = users.length - 1; index1 >= 0; index1--) {
+            const user = users[index1];
+            document.write(`<div>${user.age}</div>`)
+
+        }
+        
+        
+
+    </script>
+</body>
+</html>
