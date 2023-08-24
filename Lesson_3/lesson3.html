@@ -29,21 +29,63 @@
             {id: 5, name: 'olya', age: 16, status: true},
             {id: 6, name: 'hrystia', age: 17, status: false},
         ];
-        console.log(users.length)
+        // console.log(users.length)
+        // document.write(`<div>${users[0].name}</div>`)
 
         // debugger;
-        for (let index = 0; index < users.length; index++) {
-            document.write(`<div>${users[index].name}</div>`)
-        }
-        document.write(`<div>${users[0].name}</div>`)
+        // for (let index = 0; index < users.length; index++) {
+        //     document.write(`<div>${users[index].name}</div>`)
+        // }
 
-        for (let index1 = users.length - 1; index1 >= 0; index1--) {
-            const user = users[index1];
-            document.write(`<div>${user.age}</div>`)
+        // for (let i = 0; i < users.length; i++) { // itar
+        //     const user = users[i];
+        //     document.write(`<div>${user.name} ${user.age}</div>`)
+        // }
 
-        }
-        
-        
+        // for (let i = users.length - 1; i >= 0; i--) { // реверсивний цикл, ritar
+        //     const user = users[i];
+        //     console.log(user)
+        //     // document.write(`<div>${user.age}</div>`)
+        // }
+
+        // for (let user of users) { // йде тільки від початку до кінця, iter
+        //     if (!user.status) {
+        //     document.write(`<div>${user.name} ${user.status}</div>`)
+        //     }
+        // }
+
+        // for (const user of users) {
+        //     // console.log(user)
+        //     for (const field in users) { //itin
+        //         console.log(field + ' ' + users[field])
+        //     }
+        //     console.log('--------')
+        // }
+
+        // debugger
+        // for (let i = 0; i < 3; i++) {
+        //     for (let j = 0; j < 5; j++) {
+        //         for (let k = 0; k < 7; k++) {
+        //            console.log(i, j, k)
+        //         }
+        //     }
+        // }
+
+        // let i = 0;
+        // while (i < users.length) {
+        //     let user = users[i]
+        //     console.log(user)
+        //     i++
+        // }
+
+        // do {
+        //     console.log('do')
+        // } while (false)
+
+
+
+
+
 
     </script>
 </body>

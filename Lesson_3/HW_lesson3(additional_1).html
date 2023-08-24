@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // - є масив :
+        let arr = [2,17,13,6,22,31,45,66,100,-18];
+
+        // 1. перебрати його циклом while
+        let arrWhile1 = 0;
+        while (arrWhile1 < arr.length) {
+          document.write(`<div>${arr[arrWhile1]}</div>`)
+          arrWhile1++;
+        }
+        document.write(`<br>`);
+
+        // 2. перебрати його циклом for
+        for (let arrayFor1 = 0; arrayFor1 < arr.length; arrayFor1++) {
+          const arrElement = arr[arrayFor1];
+          document.write(`<div>${arrElement}</div>`)
+        }
+        document.write(`<br>`);
+
+        // 3. перебрати циклом while та вивести  числа тільки з непарним індексом
+        let arrWhile2 = 0;
+        while (arrWhile2 < arr.length) {
+          if (arr[arrWhile2] % 2) {
+            document.write(`<div>${arr[arrWhile2]}</div>`);
+          }
+          arrWhile2++;
+        }
+        document.write(`<br>`);
+
+        // 4. перебрати циклом for та вивести  числа тільки з непарним індексом
+        for (let arrayFor2 = 0; arrayFor2 < arr.length; arrayFor2++) {
+          const arrElement = arr[arrayFor2];
+          if (arrElement % 2) {
+            document.write(`<div>${arrElement}</div>`)
+          }
+        }
+        document.write(`<br>`);
+
+        // 5. перебрати циклом while та вивести  числа тільки парні  значення
+        let arrWhile3 = 0;
+        while (arrWhile3 < arr.length) {
+          if (!(arr[arrWhile3] % 2)) {
+            document.write(`<div>${arr[arrWhile3]}</div>`);
+          }
+          arrWhile3++;
+        }
+        document.write(`<br>`);
+
+        // 6. перебрати циклом for та вивести  числа тільки парні  значення
+        for (let arrayFor3 = 0; arrayFor3  < arr.length; arrayFor3++) {
+          const arrElement = arr[arrayFor3];
+          if (!(arrElement % 2)) {
+              document.write(`<div>${arrElement}</div>`)
+          }
+        }
+        document.write(`<br>`);
+
+        // 7. замінити кожне число кратне 3 на слово okten
+        for (let index = 0; index < arr.length; index++) {
+          const arrElement = arr[index];
+          if (!(arr[index] % 3)) {
+              document.write(`<div>${'okten'} ${arrElement}</div>`)
+          }
+        }
+        document.write(`<br>`);
+
+        // МАСИВ КНИЖОК
+        let books = [
+          {title: 'Gone with the Wind', pageCount: 300, genre: ['adventure']},
+          {title: 'Little Prince', pageCount: 330, genre : ['fantasy', 'comedy']},
+          {title: 'Harry Potter and the Prisoner of Azkaban', pageCount: 350, genre: ['fiction']}
+        ]
+
+        // - знайти найбільшу книжку
+        let biggestBook = books[0];
+        for (let index = 1; index < books.length; index++) {
+          const book = books[index];
+          if (book.pageCount > biggestBook.pageCount) {
+              biggestBook = book;
+          }
+        }
+        console.log(biggestBook)
+
+        // - знайти книжку/ки з найбільшою кількістю жанрів
+        console.log(books[1].genre.length)
+        let biggestGenre = books[0];
+        for (let index = 1; index < books.length; index++) {
+          const book = books[index];
+          if (book.genre.length > biggestGenre.genre.length) {
+            biggestGenre = book;
+          }
+        }
+        console.log(biggestGenre.genre)
+
+        // let biggestGenre1 = books[0];
+        // for (const biggestGenreElement of books) {
+        //     if (biggestGenreElement.genre.length > biggestGenre1.genre.length) {
+        //     biggestGenre1 = biggestGenreElement;
+        //   }
+        // }
+        // console.log(biggestGenre1.genre)
+
+        // - знайти книжку/ки з найдовшою назвою
+        let biggestTitle = books[0].title;
+        for (let index = 0; index < books.length; index++) {
+          const bookTitle = books[index].title;
+          if (biggestTitle.length < bookTitle.length) {
+              biggestTitle = bookTitle;
+          }
+        }
+        console.log(biggestTitle)
+
+    </script>
+</body>
+</html>
