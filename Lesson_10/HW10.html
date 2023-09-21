@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*До другого завдання*/
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*До першого додаткового завдання*/
+        .mainContainer {
+            display: flex;
+            flex-direction: column;
+            width: 90vw;
+        }
+
+        .columnContainer {
+            display: flex;
+            width: 100%;
+        }
+
+        .column {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+        }
+
+        .lineContainer {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .oneLine {
+            display: flex;
+        }
+
+        .line {
+            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+        }
+
+        /*До другог додаткового завдання*/
+        #div3 {
+            width: 200px;
+            height: 200px;
+            background-color: palevioletred;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<!--Стоврити форму з трьома полями для name,surname,age та кнопкою.
+При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ.
+Іншими словами : заповнити форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом -->
+<form name="form1">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="surname" name="surname">
+    <input id="i1" type="number" placeholder="age" name="age">
+    <button id="button">SEND</button>
+</form>
+
+<div id="div1">
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+</div>
+
+<script>
+    let form = document.forms['form1'];
+
+    let p1 = document.getElementById('p1');
+    let p2 = document.getElementById('p2');
+    let p3 = document.getElementById('p3');
+
+    form.onsubmit = function (event) {
+        event.preventDefault();
+        p1.innerText = 'Name: ' + this.name.value;
+        p2.innerText = 'Surname: ' + this.surname.value;
+        p3.innerText = 'Age: ' + this.age.value;
+    }
+
+    let br = document.createElement('br');
+    document.body.append(br, br.cloneNode(), br.cloneNode())
+</script>
+
+
+<!-- є сторінка, на якій є блок, якому знаходиьтся цифра.
+написати код, який при кожному перезавантажені сторінки буде додавати до неї +1 -->
+<div id="div2">number</div>
+<script>
+    let div2 = document.getElementById('div2');
+    let number = localStorage.getItem('number') || 0;
+    localStorage.setItem('number', number);
+    div2.innerText = number;
+    number++;
+    localStorage.setItem('number', number);
+
+    document.body.append(br, br.cloneNode(), br.cloneNode())
+</script>
+
+
+<!-- Є сторінка index.html (назва довільна),
+при відвідуванні якої в локальне сховще, в масив sessions зберігається інформація про дату та час відвідування сторінки.
+Є ще сторінка sessions.html (назва довільна),
+при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html.
+Інфу НЕ виводити в консоль, а побудувати дом структуру під кожну сессію -->
+<script>
+    window.onload = function () {
+        localStorage.setItem('date', new Date(this.performance.timeOrigin))
+    }
+
+    document.body.append(br, br.cloneNode(), br.cloneNode())
+</script>
+
+
+<!-- зробити масив на 100 об'єктів та дві кнопки prev next
+при завантажені сторінки з'являються перші 10 об'єктів.
+При натисканні next виводяться настпні 10 об'єктів
+При натисканні prev виводяться попередні 10 об'єктів -->
+<button id="next">NEXT</button>
+<button id="previous">PREVIOUS</button>
+<div id="div"></div>
+<script>
+    const users = [
+        {name: "John Smith"},
+        {name: "Jane Doe"},
+        {name: "Michael Johnson"},
+        {name: "Emily Brown"},
+        {name: "William Davis"},
+        {name: "Olivia Martinez"},
+        {name: "James Wilson"},
+        {name: "Sophia Anderson"},
+        {name: "Benjamin Taylor"},
+        {name: "Mia Garcia"},
+        {name: "Daniel Miller"},
+        {name: "Ava Rodriguez"},
+        {name: "Matthew Lee"},
+        {name: "Isabella Harris"},
+        {name: "Joseph White"},
+        {name: "Emma Clark"},
+        {name: "David Hall"},
+        {name: "Abigail Turner"},
+        {name: "Alexander Walker"},
+        {name: "Charlotte King"},
+        {name: "Samuel Moore"},
+        {name: "Grace Young"},
+        {name: "Christopher Baker"},
+        {name: "Amelia Martinez"},
+        {name: "Andrew Turner"},
+        {name: "Harper Garcia"},
+        {name: "Nicholas Lewis"},
+        {name: "Sofia Lopez"},
+        {name: "Ethan Scott"},
+        {name: "Avery Nelson"},
+        {name: "Olivia Adams"},
+        {name: "Samuel Mitchell"},
+        {name: "Mia Green"},
+        {name: "Ryan Turner"},
+        {name: "Lily Wilson"},
+        {name: "Nathan Harris"},
+        {name: "Zoey Perez"},
+        {name: "William Hall"},
+        {name: "Madison Davis"},
+        {name: "Matthew Anderson"},
+        {name: "Emily Perez"},
+        {name: "Daniel Wright"},
+        {name: "Harper Martin"},
+        {name: "Christopher Turner"},
+        {name: "Sophia Gonzalez"},
+        {name: "Joseph Martinez"},
+        {name: "Ella Turner"},
+        {name: "Alexander Robinson"},
+        {name: "Grace Johnson"},
+        {name: "Samuel Lewis"},
+        {name: "Mia Hernandez"},
+        {name: "Benjamin Anderson"},
+        {name: "Ava Hernandez"},
+        {name: "Nicholas Davis"},
+        {name: "Olivia Brown"},
+        {name: "Andrew Martinez"},
+        {name: "Mia Lopez"},
+        {name: "William Clark"},
+        {name: "Sofia Turner"},
+        {name: "Daniel Walker"},
+        {name: "Harper Rodriguez"},
+        {name: "David Harris"},
+        {name: "Isabella Adams"},
+        {name: "Joseph Martinez"},
+        {name: "Sophia White"},
+        {name: "Matthew Green"},
+        {name: "Ava King"},
+        {name: "Samuel Mitchell"},
+        {name: "Emily Hall"},
+        {name: "Michael Scott"},
+        {name: "Charlotte Martin"},
+        {name: "Benjamin Harris"},
+        {name: "Grace Turner"},
+        {name: "James Wright"},
+        {name: "Lily Adams"},
+        {name: "Alexander Martinez"},
+        {name: "Sofia Davis"},
+        {name: "William Harris"},
+        {name: "Abigail Turner"},
+        {name: "Daniel Lewis"},
+        {name: "Mia Turner"},
+        {name: "Samuel Baker"},
+        {name: "Emma Lopez"},
+        {name: "Joseph Wilson"},
+        {name: "Olivia Wright"},
+        {name: "Michael Turner"},
+        {name: "Ava Miller"},
+        {name: "Benjamin Robinson"},
+        {name: "Sophia Lee"},
+        {name: "Christopher Walker"},
+        {name: "Grace Robinson"},
+        {name: "David Johnson"},
+        {name: "Emily Turner"},
+        {name: "William Adams"},
+        {name: "Mia Perez"},
+        {name: "Andrew Nelson"},
+        {name: "Harper Anderson"},
+        {name: "Nicholas Harris"},
+        {name: "Ava Gonzalez"},
+        {name: "Samuel Davis"}
+    ];
+
+    let container = document.getElementById('div');
+
+    let amountOfUsers = 10;
+
+    let index = 0;
+    let indexAmount = amountOfUsers;
+
+    window.onload = function () {
+        for (let i = 0; i < amountOfUsers; i++) {
+            const user = users[i];
+            console.log(users[i], index, indexAmount)
+            let userContainer = document.createElement('p');
+            userContainer.innerText = `${user.name}`;
+            container.append(userContainer);
+        }
+    }
+
+    let buttonNext = document.getElementById('next');
+
+
+    buttonNext.onclick = function (event) {
+        event.preventDefault();
+        container.innerText = '';
+        index = index + amountOfUsers;
+        indexAmount = indexAmount + amountOfUsers;
+        if (indexAmount <= users.length) {
+            for (let i = index; i < indexAmount; i++) {
+                const user = users[i];
+                let userContainer = document.createElement('p');
+                userContainer.innerText = `${user.name}`;
+                container.append(userContainer);
+            }
+        } else {
+            let userContainer = document.createElement('p');
+            userContainer.innerText = 'There are no users left';
+            container.append(userContainer);
+        }
+    }
+
+    let buttonPrevious = document.getElementById('previous');
+
+    buttonPrevious.onclick = function (event) {
+        event.preventDefault();
+        container.innerText = '';
+        index = index - amountOfUsers;
+        indexAmount = indexAmount - amountOfUsers;
+        if (index >= 0) {
+            for (let i = index; i < indexAmount; i++) {
+                const user = users[i];
+                console.log(users[i], index, indexAmount)
+                let userContainer = document.createElement('p');
+                userContainer.innerText = `${user.name}`;
+                container.append(userContainer);
+            }
+        } else {
+            let userContainer = document.createElement('p');
+            userContainer.innerText = 'There are no users left';
+            container.append(userContainer);
+        }
+    }
+
+    document.body.append(br, br.cloneNode(), br.cloneNode())
+</script>
+
+
+<!--- Створити довільний елемент з id = text та створити кнопку.
+Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".-->
+<p id="text">Lorem</p>
+<button id="deleter">Deleter</button>
+<script>
+    let paragraph = document.getElementById('text');
+    let buttonDeleter = document.getElementById('deleter');
+    buttonDeleter.onclick = function () {
+        paragraph.innerText = '';
+    }
+
+    document.body.append(br, br.cloneNode(), br.cloneNode())
+</script>
+
+
+<!-- створити інпут який приймає вік людини та кнопку яка підтверджує дію.
+При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача -->
+<form name="age">
+    <input type="number" name="age" placeholder="age">
+    <button>SEND</button>
+</form>
+
+<script>
+    let form1 = document.forms['age'];
+    form1.addEventListener('submit', function (event) {
+            event.preventDefault();
+            console.log('hello')
+            let p = document.createElement('p');
+            if (+this.age.value >= 18) {
+                p.innerText = 'Your age is more than 18!'
+            } else {
+                p.innerText = 'Your age is lower than 18 :('
+            }
+            document.body.appendChild(p);
+        }
+    )
+
+    document.body.append(br, br.cloneNode(), br.cloneNode())
+</script>
+
+
+<!-- *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+(Додаткова частина для завдання) -->
+<form id="formTableCreator">
+    <input type="number" name="numberOfLines" placeholder="Number of lines">
+    <input type="number" name="numberOfColumns" placeholder="Number of Columns">
+    <input type="text" name="textOfColumns" placeholder="Column's text">
+    <button id="button1">Click on me!</button>
+</form>
+
+<script>
+    let formTableCreator = document.forms['formTableCreator'];
+
+    formTableCreator.addEventListener('submit', function (event) {
+            event.preventDefault()
+            let mainContainer = document.createElement('div');
+            mainContainer.classList.add('mainContainer');
+            let columnContainer = document.createElement('div');
+            columnContainer.classList.add('columnContainer')
+            let lineContainer = document.createElement('div');
+            lineContainer.classList.add('lineContainer');
+
+            let numberOfColumns = +this.numberOfColumns.value;
+            let numberOfLines = +this.numberOfLines.value;
+            let textOfColumns = this.textOfColumns.value;
+
+            for (let index = 1; index <= numberOfColumns; index++) {
+                let column = document.createElement('div');
+                column.classList.add('column')
+                column.innerText = `${textOfColumns} ${index}`;
+                columnContainer.append(column);
+            }
+
+            for (let index = 1; index <= numberOfLines; index++) {
+                let oneLine = document.createElement('div');
+                oneLine.classList.add('oneLine');
+                for (let index = 1; index <= numberOfColumns; index++) {
+                    let line = document.createElement('div');
+                    line.classList.add('line');
+                    line.innerText = `Line ${index}`
+                    oneLine.append(line);
+                }
+                lineContainer.append(oneLine)
+            }
+
+            document.body.appendChild(mainContainer);
+            mainContainer.append(columnContainer, lineContainer);
+        }
+    )
+
+    document.body.append(br, br.cloneNode(), br.cloneNode())
+</script>
+
+
+<!--    *** (подібне було вище, але...будьте уважні в другій частині)
+створити сторінку з довільним блоком, в середині якого є значення "100грн"
+при перезавантаженні сторінки до значаення додається по 10грн, але !!!
+зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.
+При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається-->
+<div id="div3"></div>
+<script>
+    let flag = (localStorage.getItem('type')) || 'a';
+
+    let data1 = parseInt(localStorage.getItem('data 1'));
+    let data2 = parseInt(localStorage.getItem('data 2'));
+
+    let div3 = document.getElementById('div3');
+    let sum = localStorage.getItem('sum') || '100 UAN';
+    div3.innerText = sum;
+
+    window.addEventListener('load', function () {
+            if (flag === 'a') {
+                let data1 = new Date().getTime();
+                localStorage.setItem('data 1', JSON.stringify(data1));
+                flag = 'b';
+                localStorage.setItem('type', flag);
+                if ((data1 - data2) >= 10000 || (data2 - data1) >= 10000) {
+                    console.log('more than 10 minutes passed')
+                    sum = parseInt(sum) + 10;
+                    sum = `${sum} UAH`;
+                    div3.innerText = sum;
+                    localStorage.setItem('sum', sum)
+                }
+            } else {
+                let data2 = new Date().getTime();
+                localStorage.setItem('data 2', JSON.stringify(data2));
+                flag = 'a';
+                localStorage.setItem('type', flag);
+                if ((data1 - data2) >= 10000 || (data2 - data1) >= 10000) {
+                    console.log('more than 10 minutes passed')
+                    sum = parseInt(sum) + 10;
+                    sum = `${sum} UAH`;
+                    div3.innerText = sum;
+                    localStorage.setItem('sum', sum)
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>
