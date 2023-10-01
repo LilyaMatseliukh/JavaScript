@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let url = new URL(location.href);
+        let data = JSON.parse(url.searchParams.get('data'));
+        console.log(data);
+
+        let div = document.createElement('div');
+
+        let writer = function (name, value, additional) {
+            let paragraph1 = document.createElement('p');
+            let paragraph2 = document.createElement('p');
+            paragraph1.innerText = `${name} ${value}`;
+            paragraph2.innerText = `${additional}`;
+            if (additional) {
+              paragraph2.innerText = `${additional}`;
+              div.appendChild(paragraph2);
+            }
+            div.append(paragraph1);
+        }
+
+        writer('Id:', data.id);
+        writer('Name:', data.name);
+        writer('Username:', data.username);
+        writer('Email:', data.email);
+        writer('Street:', data.address.street, 'Address:');
+        writer('Suite:', data.address.suite);
+        writer('City:', data.address.city);
+        writer('Zipcode:', data.address.zipcode);
+        writer('Lat:', data.address.geo.lat, 'Geo:');
+        writer('Lng:', data.address.geo.lng,);
+        writer('Phone:', data.phone,);
+        writer('Website:', data.website,);
+        writer('Name:', data.company.name, 'Company:');
+        writer('CatchPhrase:', data.company.catchPhrase);
+        writer('Bs:', data.company.bs);
+
+        document.body.appendChild(div);
+    </script>
+</body>
+</html>
