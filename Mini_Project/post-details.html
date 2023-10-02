@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @font-face{
+            font-family: Helvetica;
+            src: url("Helvetica.ttf");
+        }
+
+        body {
+            margin: 0;
+            font-family: Helvetica;
+            background-color: #000132;
+        }
+
+        #mainPostBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            color: #FFF;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        #postBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 550px;
+            height: 250px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 1px solid #A962FF;
+        }
+
+        li, ul {
+            color: #C4C4C4;
+            font-size: 15px;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        #mainCommentsBlock {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #commentsBlock {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .commentBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 360px;
+            height: 235px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            border: 1px solid #A962FF;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainPostBlock">
+        <div id="postBlock">
+            <h2>Post's Details</h2>
+        </div>
+    </div>
+    <div id="mainCommentsBlock">
+        <h2>Post's Comments</h2>
+        <div id="commentsBlock"></div>
+    </div>
+    <script>
+        let userId = new URL(location.href).searchParams.get('UserId');
+        let postId = new URL(location.href).searchParams.get('PostId');
+
+        let url = 'https://jsonplaceholder.typicode.com/posts/';
+
+        let postBlock = document.getElementById('postBlock');
+
+        fetch(url + postId)
+            .then(value => value.json())
+            .then(post => {
+                let ul = document.createElement('ul');
+                writer(post, ul)
+                postBlock.appendChild(ul);
+            })
+
+        function writer(object, tag) {
+            for (const key in object) {
+                    let li = document.createElement('li');
+                    li.innerHTML = `<b>${key}:</b> ${object[key]}`
+                    tag.appendChild(li);
+            }
+        }
+
+        let commentsBlock = document.getElementById('commentsBlock');
+
+        fetch(url + postId + '/comments')
+            .then(value => value.json())
+            .then(comments => {
+                for (const comment of comments) {
+                        let commentBlock = document.createElement('div');
+                        commentBlock.classList.add('commentBlock');
+
+                        let ul = document.createElement('ul');
+
+                        writer(comment, ul);
+                        commentBlock.appendChild(ul);
+                        commentsBlock.appendChild(commentBlock);
+                }
+            })
+
+    </script>
+
+</body>
+</html>

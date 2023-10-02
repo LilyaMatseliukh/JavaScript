@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @font-face{
+            font-family: Helvetica;
+            src: url("Helvetica.ttf");
+        }
+
+        body {
+            margin: 0;
+            font-family: Helvetica;
+            background-color: #000132;
+        }
+
+        #mainBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #userBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 550px;
+            height: 560px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 1px solid #A962FF;
+        }
+
+        h2 {
+            color: #FFF;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        li, ul {
+            color: #C4C4C4;
+            font-size: 15px;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        li:first-letter, ul:first-letter {
+            text-transform: uppercase;
+        }
+
+        #allPosts {
+            width: 500px;
+            height: 50px;
+            border: none;
+            border-radius: 35px;
+            background: linear-gradient(91deg, #C6F1F7 -4.01%, #F983E9 36.14%, #B877FF 77.44%, #C2E9CD 106.11%);
+            color: #FFF;
+            font-size: 15px;
+        }
+
+        button:hover{
+            transform: scale(1.1);
+            transition: 1s;
+        }
+
+        h6 {
+            color: white;
+        }
+
+        #usersPosts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-top: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .onePost {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 150px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            border: 1px solid #A962FF;
+        }
+
+        p {
+            margin-top: 10px;
+            color: #C4C4C4;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FFF;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .postDetails {
+            width: 100px;
+            height: 30px;
+            border: none;
+            border-radius: 35px;
+            background: linear-gradient(91deg, #C6F1F7 -4.01%, #F983E9 36.14%, #B877FF 77.44%, #C2E9CD 106.11%);
+        }
+    </style>
+</head>
+<body>
+    <div id="mainBlock">
+        <div id="userBlock">
+            <h2>Information about </h2>
+        </div>
+        <button id="allPosts">Post of</button>
+    </div>
+    <div id="usersPosts"></div>
+
+    <script>
+        let url = 'https://jsonplaceholder.typicode.com/users/';
+        let name = new URL(location.href).searchParams.get('name');
+
+        let h2 = document.getElementsByTagName('h2')[0];
+        h2.innerText = `${h2.innerText} ${name}`;
+
+        let userBlock = document.getElementById('userBlock');
+
+        let id = new URL(location.href).searchParams.get('id');
+
+        let ul = document.createElement('ul');
+
+        fetch(url + id)
+            .then(value => value.json())
+            .then(user => {
+                writer(user, ul)
+                userBlock.appendChild(ul);
+            })
+
+        function writer(object, tag) {
+            for (const key in object) {
+                if (typeof object[key] != 'object') {
+                    let li = document.createElement('li');
+                    li.innerHTML = `<b>${key}:</b> ${object[key]}`
+                    tag.appendChild(li);
+                } else {
+                    let ul = document.createElement('ul');
+                    ul.innerHTML = `<b style="margin-bottom: 10px">${key}:</b>`
+                    tag.appendChild(ul);
+                    writer(object[key], ul)
+                }
+            }
+        }
+
+        let button = document.getElementById('allPosts');
+        button.innerText = `${button.innerText} ${name}`;
+
+        let postsDiv = document.getElementById('usersPosts');
+
+        button.onclick = function (ev) {
+            let number = 1;
+            ev.preventDefault()
+            fetch(url + id + '/posts')
+                .then(value => value.json())
+                .then(posts => {
+                    for (const post of posts) {
+                        let onePost = document.createElement('div');
+                        onePost.classList.add('onePost');
+
+                        let paragraph = document.createElement('p');
+                        paragraph.innerText = `Post ${number}: ${post.title}`
+                        number += 1;
+
+                        let button = document.createElement('button');
+                        button.classList.add('postDetails')
+
+                        let a = document.createElement('a');
+                        a.innerText = 'DETAILS';
+                        a.href = `post-details.html?UserId=${id}&PostId=${post.id}`;
+
+                        button.appendChild(a);
+
+                        onePost.append(paragraph, button);
+                        postsDiv.appendChild(onePost);
+                    }
+                })
+            postsDiv.innerText = '';
+        }
+
+    </script>
+</body>
+</html>
